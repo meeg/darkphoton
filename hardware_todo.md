@@ -4,6 +4,21 @@
 * SiPM end: strip back the shield and drain wire, solder + and - wires to header pins, 
 use heatshrink to isolate the shield from the header pins
 
+# power supply
+* are we going to get the Fermilab HV boards?
+* do we need to worry about making LV and HV distribution boards?
+* where can the power supplies go?
+
+# bias trimming
+* how closely do the gains need to match?
+* what's the spread in breakdown voltage/gain?
+* is temperature dependence enough to matter?
+
+# signal cabling
+* what kind of cable inside the frame? thickness vs. attenuation; shielding (probably require double-shielded)
+* how do we get the signals out from the frame? bulkhead connectors?
+* where do the discriminators go?
+
 # tests
 * crosstalk: hook up and power two preamps and SiPMs (with realistic layout for the preamps and power cables), 
 pulse one SiPM, watch the other preamp output

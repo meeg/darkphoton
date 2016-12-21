@@ -4,6 +4,11 @@
 * SiPM end: strip back the shield and drain wire, solder + and - wires to header pins, 
 use heatshrink to isolate the shield from the header pins
 
+# damn inductors
+* what's the hysteresis curve look like for our ferrite? how much does the inductance get derated at 0.25 T?
+* how much inductance do we actually need?
+* if we go non-magnetic: how much does that hurt crosstalk?
+
 # power supply
 * are we going to get the Fermilab HV boards?
 * do we need to worry about making LV and HV distribution boards?

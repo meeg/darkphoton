@@ -4,8 +4,8 @@
 * SiPM end: strip back the shield and drain wire, solder + and - wires to header pins, 
 use heatshrink to isolate the shield from the header pins
 
-# damn inductors
-* what's the hysteresis curve look like for our ferrite? how much does the inductance get derated at 0.25 T?
+# inductors
+* what's the B-H curve look like for our ferrite? how much does the inductance get derated at 0.25 T?
 * how much inductance do we actually need?
 * if we go non-magnetic: how much does that hurt crosstalk?
 

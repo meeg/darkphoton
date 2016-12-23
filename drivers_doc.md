@@ -63,6 +63,8 @@ void v1495Run (int id)
 
 ROC25.crl.RFCLK: go, done usrtrig
 
+calls v1495ciptag(id)
+
 ## v1495Reload
 ```
 void v1495Reload (int id)
@@ -98,7 +100,23 @@ int v1495CommonstopRead (int id)
 
 ROC25.crl.RFCLK: trigger usrtrig
 
+calls v1495TimewindowRead(id)
+
 # helper functions for the above
+
+## v1495TimewindowRead
+```
+/*******************************************************************************
+* v1495TimewindowRead - readout the time window setting value
+** RETURNS: setting value or error if the board is not initialized
+********************************************************************************/
+int v1495TimewindowRead (int id)
+```
+
+## v1495ciptag
+```
+void v1495ciptag (int id)
+```
 
 # tests (are they used?)
 
@@ -112,15 +130,6 @@ ROC25.crl.RFCLK: trigger usrtrig
 * RETURNS: prints some status of v1495 on screen
 ********************************************************************************/
 void v1495Status (int id)
-```
-
-## v1495TimewindowRead
-```
-/*******************************************************************************
-* v1495TimewindowRead - readout the time window setting value
-** RETURNS: setting value or error if the board is not initialized
-********************************************************************************/
-int v1495TimewindowRead (int id)
 ```
 
 ## v1495Reset
@@ -236,11 +245,6 @@ void v1495TDCRead (int id)
 ## g1
 ```
 int g1 (int id, int row)
-```
-
-## v1495ciptag
-```
-void v1495ciptag (int id)
 ```
 
 ## v1495Writetest

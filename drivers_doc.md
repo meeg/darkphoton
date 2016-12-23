@@ -8,6 +8,9 @@
 STATUS v1495Init (UINT32 addr, UINT32 addr_inc, int nmod)
 ```
 
+ROC25.crl.RFCLK: download
+
+
 ## v1495Status
 ```
 /*******************************************************************************
@@ -27,6 +30,8 @@ void v1495Status (int id)
 ********************************************************************************/
 void v1495TimewindowSet (int id, int val)
 ```
+
+ROC25.crl.RFCLK: prestart
 
 ## v1495TimewindowRead
 ```
@@ -58,6 +63,8 @@ void delay (int ms);
 void v1495Timeset (int n, int id, int sleep)
 ```
 
+ROC25.crl.RFCLK: prestart
+
 ## v1495sprintf
 ```
 //This function simply calls sprintf to fill a character string
@@ -70,6 +77,8 @@ void v1495sprintf(char* aString, int size, char aCharge, int fileNum, char fileT
 //Activate Pulser (This disables 'data-mode' pass-through of input channels)
 void v1495ActivatePulser(int id0)
 ```
+
+ROC25.crl.RFCLK: prestart
 
 ## v1495DisactivatePulser
 ```
@@ -86,6 +95,9 @@ void v1495DisactivatePulser(int id0)
 ********************************************************************************/
 void v1495PatternSet (int level, int id, char charge, char TorB, int patnum)
 ```
+
+ROC25.crl.RFCLK: prestart
+
 
 ## v1495DelayTest
 ```
@@ -158,6 +170,9 @@ void v1495Chout (int id)
 void v1495Run (int id)
 ```
 
+ROC25.crl.RFCLK: go, done usrtrig
+
+
 ## dummydelay
 ```
 void dummydelay (int delay)
@@ -167,6 +182,9 @@ void dummydelay (int delay)
 ```
 void v1495Reload (int id)
 ```
+
+ROC25.crl.RFCLK: download
+
 
 ## v1495AutoTimeset
 ```
@@ -188,20 +206,29 @@ void v1495TDCRead (int id)
 int v1495TDCReadout (int id, int ii)
 ```
 
+ROC25.crl.RFCLK: trigger usrtrig
+
+
 ## v1495TDCcount
 ```
 int v1495TDCcount (int id)
 ```
+
+ROC25.crl.RFCLK: trigger usrtrig
 
 ## v1495RevisionRead
 ```
 int v1495RevisionRead (int id)
 ```
 
+ROC25.crl.RFCLK: trigger usrtrig
+
 ## v1495CommonstopRead
 ```
 int v1495CommonstopRead (int id)
 ```
+
+ROC25.crl.RFCLK: trigger usrtrig
 
 ## g1
 ```

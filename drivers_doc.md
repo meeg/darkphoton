@@ -12,6 +12,8 @@ STATUS v1495Init (UINT32 addr, UINT32 addr_inc, int nmod)
 
 ROC25.crl.RFCLK: download
 
+initializes v1495 structs and tests VME reads
+
 ## v1495TimewindowSet
 ```
 /*******************************************************************************
@@ -23,6 +25,10 @@ void v1495TimewindowSet (int id, int val)
 ```
 
 ROC25.crl.RFCLK: prestart
+
+scratch (0x1020) is set to val 
+
+val is enforced to only have the bits 0xf33f: delay=[0..7], time window=[8..11], don't care [12..15]
 
 ## v1495Timeset
 ```
@@ -36,6 +42,12 @@ void v1495Timeset (int n, int id, int sleep)
 
 ROC25.crl.RFCLK: prestart
 
+read val from time_{id}.txt files (format is channel:val, but ``channel`` is ignored and assumed to be sequential; default files have val=exx)
+
+set stuff for channels 0..n-1: c_ctrl_l (0x101A) = 0x2000+i, then c_ctrl_h (0x101C) = value
+
+``sleep`` is not used
+
 ## v1495ActivatePulser
 ```
 //Activate Pulser (This disables 'data-mode' pass-through of input channels)
@@ -43,6 +55,8 @@ void v1495ActivatePulser(int id0)
 ```
 
 ROC25.crl.RFCLK: prestart
+
+write 0x0001 to f_data_l (0x1038), read it back
 
 ## v1495PatternSet
 ```
@@ -56,6 +70,13 @@ void v1495PatternSet (int level, int id, char charge, char TorB, int patnum)
 
 ROC25.crl.RFCLK: prestart
 
+for level 0 or level 1, open pattern_{charge}{TorB}_{patnum}.txt
+for i=0..255, load values from file to pulse1..6[i] (0x1400+i, 0x1600+i, etc.) and readback
+
+
+for level 2, open pattern_2.txt
+for i=0..127, load value from file to pulse1[i] (0x1400+i) and readback
+
 ## v1495Run
 ```
 void v1495Run (int id)
@@ -63,7 +84,7 @@ void v1495Run (int id)
 
 ROC25.crl.RFCLK: go, done usrtrig
 
-calls v1495ciptag(id)
+calls v1495ciptag(id): write 0x7fff to the last TDC address (0x12ff)
 
 ## v1495Reload
 ```
@@ -72,12 +93,16 @@ void v1495Reload (int id)
 
 ROC25.crl.RFCLK: download
 
+reloads the FPGA (write 0x0001 to 0x8016)
+
 ## v1495TDCReadout
 ```
 int v1495TDCReadout (int id, int ii)
 ```
 
 ROC25.crl.RFCLK: trigger usrtrig
+
+read and return 0x1200+ii
 
 ## v1495TDCcount
 ```
@@ -86,12 +111,16 @@ int v1495TDCcount (int id)
 
 ROC25.crl.RFCLK: trigger usrtrig
 
+read last TDC address (0x12ff): if it matches 0x81xx, return [0..7]; else return 0xd1ad
+
 ## v1495RevisionRead
 ```
 int v1495RevisionRead (int id)
 ```
 
 ROC25.crl.RFCLK: trigger usrtrig
+
+read and return revision (0x103C)
 
 ## v1495CommonstopRead
 ```
@@ -100,7 +129,9 @@ int v1495CommonstopRead (int id)
 
 ROC25.crl.RFCLK: trigger usrtrig
 
-calls v1495TimewindowRead(id)
+calls v1495TimewindowRead(id) and g1(id,j)
+
+get time window (low 8 bits of scratch)
 
 # helper functions for the above
 
@@ -113,10 +144,21 @@ calls v1495TimewindowRead(id)
 int v1495TimewindowRead (int id)
 ```
 
+read and return scratch (0x1020)
+
 ## v1495ciptag
 ```
 void v1495ciptag (int id)
 ```
+
+write 0x7fff to the last TDC address (0x12ff)
+
+## g1
+```
+int g1 (int id, int row)
+```
+
+write 0x6001 + row*4 to c_ctrl_l (0x101A), read and return a_sta_l (0x1000)
 
 # tests (are they used?)
 
@@ -240,11 +282,6 @@ void v1495AutoTimeset (int id, int sleep, short seedch, int startp)
 * RETURNS: TDC data
 ********************************************************************************/
 void v1495TDCRead (int id)
-```
-
-## g1
-```
-int g1 (int id, int row)
 ```
 
 ## v1495Writetest

@@ -144,6 +144,8 @@ get time window (low 8 bits of scratch)
 int v1495TimewindowRead (int id)
 ```
 
+called by v1495CommonstopRead
+
 read and return scratch (0x1020)
 
 ## v1495ciptag
@@ -151,12 +153,16 @@ read and return scratch (0x1020)
 void v1495ciptag (int id)
 ```
 
+called by v1495Run
+
 write 0x7fff to the last TDC address (0x12ff)
 
 ## g1
 ```
 int g1 (int id, int row)
 ```
+
+called by v1495CommonstopRead
 
 write 0x6001 + row*4 to c_ctrl_l (0x101A), read and return a_sta_l (0x1000)
 

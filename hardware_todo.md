@@ -24,6 +24,13 @@ use heatshrink to isolate the shield from the header pins
 * how do we get the signals out from the frame? bulkhead connectors?
 * where do the discriminators go?
 
+# connections
+* LV/HV bias: one set per preamp
+* signal out: one coax cable per preamp
+* LMS: ?
+* temperature: few per box?
+* anything else?
+
 # understanding things
 * readout chain: what discriminators (what thresholds?)?
 * how does the LMS work?

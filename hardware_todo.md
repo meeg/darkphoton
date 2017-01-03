@@ -16,7 +16,7 @@ use heatshrink to isolate the shield from the header pins
 
 ## bias trimming
 * how closely do the gains need to match?
-* what's the spread in breakdown voltage/gain?
+* what's the spread in breakdown voltage/gain? breakdown voltage spec says 53 +/- 5 V
 * is temperature dependence enough to matter?
 
 # signal cabling

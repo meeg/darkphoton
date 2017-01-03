@@ -38,6 +38,7 @@ use heatshrink to isolate the shield from the header pins
 # things to think about
 * self-triggering cosmics calibration - all we need is a special trigger, right?
 * do we want external trigger paddles?
+* if B-field affects preamps, we should do calibrations with magnets on
 
 # etc.
 * temperature monitoring: what will it be?

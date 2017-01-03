@@ -20,9 +20,14 @@ use heatshrink to isolate the shield from the header pins
 * is temperature dependence enough to matter?
 
 # signal cabling
-* what kind of cable inside the frame? thickness vs. attenuation; shielding (probably require double-shielded)
+* what kind of cable inside the frame? thickness vs. attenuation; shielding (probably require double-shielded - 316D?)
 * how do we get the signals out from the frame? bulkhead connectors?
 * where do the discriminators go?
+
+# etc.
+* temperature monitoring: what will it be?
+* survey? what precision (positioning and measurement) is needed, what fiducials are appropriate?
+* slow controls? monitoring?
 
 # tests
 * crosstalk: hook up and power two preamps and SiPMs (with realistic layout for the preamps and power cables), 

@@ -24,23 +24,23 @@ REG_WREN
 
 REG_ADDR
 
+USR_ACCESS
+
 REG_DIN[15..0]
 
 REG_DOUT[15..0]: output of mux
 
-USR_ACCESS
-
 SCRATCH_OUT[15..0]: written through SCRATCH register, input to TrigSeq3 (bit 12), ZeroSuppr3 (bits 9..8), PipeTime3 (bits 6..0)
 
-C_DOUT[31..0]: written through C_CONTROL_L and C_CONTROL_H registers, input to DLYPW_IO3
+C_DOUT[31..0]: written through C_CONTROL_L and C_CONTROL_H registers, input to DLYPW_IO3;  C_DOUT[31..16], or register C_CONTROL_H, is only used inside DLYPW_IO3
 
 A_DIN[31..0]: output of DLYPW_IO3, read out through A_STATUS_L and A_STATUS_H registers
 
 ## other important stuff
 
-USR_A: output of DLYPW_IO3
+USR_A[15..0]: output of DLYPW_IO3 - this is C_DOUT[15..0], or register C_CONTROL_L; used in DLYPW_IO3, PipeTime3, TrigSeq3 (bit 14)
 
-RA: output of PipeTime3
+RA[13..0]: output of PipeTime3
 
 # important registers
 

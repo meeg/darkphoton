@@ -5,8 +5,8 @@
 use heatshrink to isolate the shield from the header pins
 
 # inductors
-* what's the B-H curve look like for our ferrite? how much does the inductance get derated at 0.25 T? answer: dead around 0.1 T
-* how much inductance do we actually need? what is the effect of losing inductance?
+* what's the B-H curve look like for our ferrite? how much does the inductance get derated at 0.25 T? answer: dead around 0.1 T (TDK data)
+* how much inductance do we actually need? what is the effect of losing inductance? answer: can expect to lose ~20% gain, I think (Mini-Circuits note AN60-010)
 * if we go non-magnetic: how much does that hurt crosstalk?
 
 # power supply

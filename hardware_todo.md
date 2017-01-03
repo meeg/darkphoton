@@ -46,6 +46,7 @@ pulse one SiPM, watch the other preamp output
 # preamp QA
 
 for repeatability, use a single SiPM for all tests and the pulser at a fixed amplitude
+
 check:
 
 * bias connection works

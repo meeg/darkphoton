@@ -14,7 +14,7 @@ use heatshrink to isolate the shield from the header pins
 * do we need to worry about making LV and HV distribution boards?
 * where can the power supplies go?
 
-# bias trimming
+## bias trimming
 * how closely do the gains need to match?
 * what's the spread in breakdown voltage/gain?
 * is temperature dependence enough to matter?
@@ -27,6 +27,7 @@ use heatshrink to isolate the shield from the header pins
 # tests
 * crosstalk: hook up and power two preamps and SiPMs (with realistic layout for the preamps and power cables), 
 pulse one SiPM, watch the other preamp output
+* B-field: build Neo magnet box, test preamp S/N with B-field on each of 3 axes
 * cable length effects: record output pulse with short SMA cable and with a long cable (chain some LEMO cables?)
 
 # preamp QA

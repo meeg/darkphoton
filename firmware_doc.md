@@ -16,7 +16,7 @@ CLK0p, CLK90p: fast clock - for RF-clocked firmware, x4 multiplication of RF clo
 
 CK62: slow clock (1/4 division of fast clock) - for RF-clocked firmware, same period as RF clock
 
-## registers
+## register-related
 
 REG_RDEN
 
@@ -37,20 +37,33 @@ C_DOUT[31..0]: written through C_CONTROL_L and C_CONTROL_H registers, input to D
 A_DIN[31..0]: output of DLYPW_IO3, read out through A_STATUS_L and A_STATUS_H registers
 
 ## VME address space
+names are from driver structs
 
-data: 0x1000
+### data
+0x1000-0x1046 mapped in struct
 
-mem: 0x1100
+### VME
+0x8000-0x8021 mapped in struct
 
-TDC: 0x1200
+### mem
+0x1100-0x11ff mapped in struct
 
-pulse: 0x1400-0x1fff in 6 blocks
+### TDC
+0x1200-0x13ff mapped in struct
 
-delays: 0x2000-0x3fff? only use 0x2000-0x20ff
+### pulse
+0x1400-0x1Fff in 6 blocks: 0x1400-0x15ff, 0x1600-0x17ff, 0x1800-0x19ff, 0x1a00-0x1bff, 0x1c00-0x1dff, 0x1e00-0x1fff
+
+## user address space
+
+### delays
+0x2000-0x3fff "assigned" in firmware (DLYPW_IO3.WRDLYPW mask) but only 0x2000-0x20ff wired to RAM, only 0x2000-0x207f read from RAM
+
+0x2000-0x2000+nch used in driver
 
 ## other important stuff
 
-USR_A[15..0]: output of DLYPW_IO3 - this is C_DOUT[15..0], or register C_CONTROL_L; used in DLYPW_IO3, PipeTime3, TrigSeq3 (bit 14)
+USR_A[15..0]: output of DLYPW_IO3 - this is C_DOUT[15..0], or register C_CONTROL_L; input to DLYPW_IO3, PipeTime3, TrigSeq3 (bit 14)
 
 RA[13..0]: output of PipeTime3
 

@@ -22,19 +22,31 @@ REG_RDEN
 
 REG_WREN
 
-REG_ADDR
-
 USR_ACCESS
 
-REG_DIN[15..0]
+REG_ADDR[15..0]: written on any VME read or write, input to ZeroSuppr3 and DLYPW_IO3
 
-REG_DOUT[15..0]: output of mux
+REG_DIN[15..0]: written on any VME write, input to ZeroSuppr3
+
+REG_DOUT[15..0]: output of mux; from coin_reference if !REG_ADDR[9], from ZeroSuppr3 otherwise
 
 SCRATCH_OUT[15..0]: written through SCRATCH register, input to TrigSeq3 (bit 12), ZeroSuppr3 (bits 9..8), PipeTime3 (bits 6..0)
 
 C_DOUT[31..0]: written through C_CONTROL_L and C_CONTROL_H registers, input to DLYPW_IO3;  C_DOUT[31..16], or register C_CONTROL_H, is only used inside DLYPW_IO3
 
 A_DIN[31..0]: output of DLYPW_IO3, read out through A_STATUS_L and A_STATUS_H registers
+
+## VME address space
+
+data: 0x1000
+
+mem: 0x1100
+
+TDC: 0x1200
+
+pulse: 0x1400-0x1fff in 6 blocks
+
+delays: 0x2000-0x3fff? only use 0x2000-0x20ff
 
 ## other important stuff
 

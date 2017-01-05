@@ -1,3 +1,11 @@
+Firmware IDs:
+
+400-430: L0
+
+440-470: L1
+
+480: L2
+
 # top-level signals
 
 ## fast I/O

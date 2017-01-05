@@ -12,7 +12,7 @@ GIN[0]: RF clock (18.8 ns period, 53.1 MHz)
 
 LCLK: V1495 bus clock (25 ns period, 40 MHz)
 
-CLK0p, CLK90p: fast clock - for RF-clocked firmware, x4 multiplication of RF clock (4.7 ns period, 212 MHz)
+CLK0p, CLK90p: fast clock - for RF-clocked firmware, x4 multiplication of RF clock (4.7 ns period, 212 MHz); for self-clocked, x25/4 multiplication of bus clock (4 ns period, 250 MHz)
 
 CK62: slow clock (1/4 division of fast clock) - for RF-clocked firmware, same period as RF clock
 
@@ -35,6 +35,8 @@ SCRATCH_OUT[15..0]: written through SCRATCH register, input to TrigSeq3 (bit 12)
 C_DOUT[31..0]: written through C_CONTROL_L and C_CONTROL_H registers, input to DLYPW_IO3;  C_DOUT[31..16], or register C_CONTROL_H, is only used inside DLYPW_IO3
 
 A_DIN[31..0]: output of DLYPW_IO3, read out through A_STATUS_L and A_STATUS_H registers
+
+F_DOUT (or F_DOUTreg)[31..0]: written through F_DATA_L and F_DATA_H; only used in L0 as input to pulse generator and muxes
 
 ## VME address space
 names are from driver structs

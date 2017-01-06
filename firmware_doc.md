@@ -6,6 +6,8 @@ Firmware IDs:
 
 480: L2
 
+This doc is based on RF-clocked 460.
+
 # top-level signals
 
 ## fast I/O
@@ -44,13 +46,23 @@ C_DOUT[31..0]: written through C_CONTROL_L and C_CONTROL_H registers, input to D
 
 A_DIN[31..0]: output of DLYPW_IO3, read out through A_STATUS_L and A_STATUS_H registers
 
-F_DOUT (or F_DOUTreg)[31..0]: written through F_DATA_L and F_DATA_H; only used in L0 as input to pulse generator and muxes
+F_DOUT (or F_DOUTreg)[31..0]: written through F_DATA_L and F_DATA_H; only used in L0, as input to pulse generator and muxes
 
 ## VME address space
 names are from driver structs
 
 ### data
 0x1000-0x1046 mapped in struct
+
+
+#### SCRATCH (0x1020)
+SCRATCH[9..8]: TDC time window (used in ZeroSuppr3)
+
+SCRATCH[6..0]: delay (used in PipeTime3), units of slow clock, typical values 1f-2e
+
+SCRATCH[12]: enable GIN[1] trigger (used in TrigSeq3)
+
+SCRATCH[13]: something to do with splat blocks for L1, according to the CRL? doesn't seem to be used in the firmware
 
 ### VME
 0x8000-0x8021 mapped in struct

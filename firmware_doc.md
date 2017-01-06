@@ -64,6 +64,10 @@ SCRATCH[12]: enable GIN[1] trigger (used in TrigSeq3)
 
 SCRATCH[13]: something to do with splat blocks for L1, according to the CRL? doesn't seem to be used in the firmware
 
+#### C_CONTROL_L (0x101a)
+
+#### C_CONTROL_H (0x101c)
+
 ### VME
 0x8000-0x8021 mapped in struct
 

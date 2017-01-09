@@ -171,6 +171,8 @@ uses Pulser1
 
 in PipeTime3, DELAYPW_IO3, TrigSeq3
 
+on input rising edge, outputs a positive pulse
+
 ### ChTSCount3
 
 in PipeTime3, ZeroSuppr3

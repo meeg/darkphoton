@@ -131,7 +131,9 @@ ROC25.crl.RFCLK: trigger usrtrig
 
 calls v1495TimewindowRead(id) and g1(id,j)
 
-get time window (low 8 bits of scratch)
+get delay (low 8 bits of scratch)
+
+use g1() to loop through time slices, looking for the RF pulse
 
 # helper functions for the above
 
@@ -165,6 +167,8 @@ int g1 (int id, int row)
 called by v1495CommonstopRead
 
 write 0x6001 + row*4 to c_ctrl_l (0x101A), read and return a_sta_l (0x1000)
+
+this returns the pipeline contents for channel 128 (GIN[0], the RF input) at the time offset specified by `row`
 
 # tests (are they used?)
 

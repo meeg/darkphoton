@@ -168,7 +168,7 @@ called by v1495CommonstopRead
 
 write 0x6001 + row*4 to c_ctrl_l (0x101A), read and return a_sta_l (0x1000)
 
-this returns the pipeline contents for channel 128 (GIN[0], the RF input) at the time offset specified by `row`
+this returns the pipeline contents for channel 129 (GIN[1], the external trigger input) at the time offset specified by `row`
 
 # tests (are they used?)
 

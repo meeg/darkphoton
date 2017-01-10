@@ -54,6 +54,10 @@ RD_AL: output of DLYPW_IO3, pulses on a read from A_STATUS_L
 
 ReRun: !C_CONTROL_L[15]
 
+## data paths
+
+MQall[8..0]: TDC data in the pipeline cell selected by RA
+
 ## VME address space
 names are from driver structs
 

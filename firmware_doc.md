@@ -113,6 +113,8 @@ channel delay settings:
 
 0x2000-0x2000+nch used in driver
 
+DELAYPW_IO3 stores 16 bits per channel. GRP32ch sends [7..0] to DLY[7..0] input of GRP4ch, and [11..8] to PW[3..0] input. But PW[3..0] is latched so that each block of 16 channels gets the same value.
+
 ## other important stuff
 
 USR_A[15..0]: output of DLYPW_IO3 - this is C_DOUT[15..0], or register C_CONTROL_L; input to DLYPW_IO3, PipeTime3, TrigSeq3 (bit 14)
@@ -162,6 +164,10 @@ uses Pulser1
 ## GRP32ch
 
 ### GRP4ch
+output TQV: hit
+output TQ[1..0]: fine time (1 ns resolution)
+output TSQ[4..0]: delayed time (1 ns resolution)
+output DLYQ[7..4]: coarse part of delay
 
 #### OutPipe1a
 
